@@ -16,12 +16,12 @@ import './App.css';
 //   );
 // }
 
-function App() {
+function App(props) {
   var apiUrl = 'http://newsapi.org/v2/top-headlines?' +
           'country=us&' +
           'apiKey=886b63931cdf4e95bbde58840ef289c2';
 
-  const [articles, setArticles] = useState("")
+  const [articles, setArticles] = useState([])
   
   function getNews(){
     fetch(apiUrl)
@@ -39,7 +39,11 @@ function App() {
   return (
     <div className="App">
       <h1>News</h1>
-      <p>{articles}</p>
+      <div>
+      {articles.map((item, index) => (
+        <p key={index}>{item.title}</p>
+      ))}
+    </div>
     </div>
   );
 }
