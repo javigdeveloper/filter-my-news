@@ -17,33 +17,38 @@ import './App.css';
 // }
 
 function App(props) {
-  var apiUrl = 'http://newsapi.org/v2/top-headlines?' +
-          'country=us&' +
-          'apiKey=886b63931cdf4e95bbde58840ef289c2';
-
   const [articles, setArticles] = useState([])
-  
-  function getNews(){
-    fetch(apiUrl)
+  const [category, setCategory] = useState("")
+
+  // var apiUrl = 'http://newsapi.org/v2/top-headlines?' +
+  //         'country=us&' +
+  //         'apiKey=886b63931cdf4e95bbde58840ef289c2';
+  // var userSearch = 'http://newsapi.org/v2/everything?' + "q=" + category + "&" +
+  // 'apiKey=886b63931cdf4e95bbde58840ef289c2';
+
+  var queryString = category ? "q=" + category + "&" : ""
+  var userDefault = 'http://newsapi.org/v2/top-headlines?' + 'country=us&' + 'apiKey=886b63931cdf4e95bbde58840ef289c2';
+  var userSearch = 'http://newsapi.org/v2/everything?' + queryString +
+  'apiKey=886b63931cdf4e95bbde58840ef289c2';
+
+  function getNews(url){
+    fetch(url)
     .then(response => response.json())
     .then(data => setArticles(data.articles));
   }
 
-  async function getNewsAsync(){
-    const promisesWithJSON = await fetch("https://randomfox.ca/floof/")
-    const data = await promisesWithJSON.json()
-    setArticles(data.articles);
-  }
-
-  useEffect(()=>getNews(), [])
+  useEffect(()=>getNews(userDefault), [])
   return (
     <div className="App">
       <h1>News</h1>
       <div>
-      {articles.map((item, index) => (
-        <p key={index}>{item.title}</p>
-      ))}
-    </div>
+        {articles.map((item, index) => (
+          <p key={index} className="newsCard">{item.title}</p>
+        ))}
+      </div>
+      <input name="" id="topic" onChange={(event) => setCategory(event.target.value)
+      }></input>
+      <button onClick={() => getNews(userSearch)}>Submit</button>
     </div>
   );
 }

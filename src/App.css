@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+.newsCard {
+  border: solid;
+  height: 3em;
+}
