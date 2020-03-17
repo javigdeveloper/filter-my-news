@@ -39,5 +39,7 @@
 
 .newsCard {
   border: solid;
-  height: 3em;
+  height: 8em;
+  margin: 1em;
+  padding-top: 1em;
 }
