@@ -19,17 +19,17 @@ function App(props) {
   useEffect(()=>getNews(userDefault), [])
   return (
     <div className="App">
-      <h1>World News</h1>
+      <h1>World News Finder</h1>
       <p>Enter the topic of interest here:</p>
       <input name="" id="topic" onChange={(event) => setCategory(event.target.value)
         }></input>
-      <button onClick={() => getNews(userSearch)}>Submit</button>
+      <button onClick={() => getNews(userSearch)}>Search</button>
       <div>
         {articles.map((item, index) => (
           <div key={index} className="newsCard">
             {item.title}
             <p>{item.description}</p>
-            <p>{item.url}</p>
+            <p>To display the full story <a href={item.url}>click here</a></p>
           </div>
         ))}
       </div>
