@@ -1,6 +1,9 @@
+html {
+  background: linear-gradient(-45deg, #8fbe63, #e73c7e, #8db667, #199c7e);
+}
+
 .App {
   text-align: center;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 }
 
 .header {
@@ -9,20 +12,21 @@
 }
 
 .prompt {
+  margin-bottom: 0.1em;
   font-size: 1.1em;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .newsCard {
   border: solid;
-  font-size: 1.1em;
-  margin: 3em;
+  font-size: 1em;
+  margin: 1% 10% 2% 10%;
   padding: 1em;
 }  
 
 @media (max-width: 380px) {
   .newsCard {
-    font-size: 0.9em;
+    font-size: 0.8em;
     margin: 1em;
     padding: 1em;
   }  
@@ -31,4 +35,22 @@
 .link:hover {
   font-size: 1.04em;
   font-weight: 600;
+}
+
+.cardImage {
+  max-width: 50%;
+}  
+
+@media (max-width: 380px) {
+  .newsCard {
+    max-width: 100%;
+  }  
+}
+
+#topic {
+  font-size: 1.2em;
+}
+
+#myBtn {
+  font-size: 1.2em;
 }
