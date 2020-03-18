@@ -15,20 +15,28 @@ function App(props) {
     .then(response => response.json())
     .then(data => setArticles(data.articles));
   }
+  
+  function hitEnter (event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById("myBtn").click();
+    }
+  }
 
   useEffect(()=>getNews(userDefault), [])
   return (
     <div className="App">
       <h1 className="header">World News Finder</h1>
       <p className="prompt">Enter the topic of interest here:</p>
-      <input name="" id="topic" onChange={(event) => setCategory(event.target.value)
+      <input name="" id="topic" onKeyUp={(event) => hitEnter(event)} onChange={(event) => setCategory(event.target.value)
         }></input>
-      <button onClick={() => getNews(userSearch)}>Search</button>
+      <button id="myBtn" onClick={() => getNews(userSearch)}>Search</button>
       <div>
         {articles.map((item, index) => (
           <div key={index} className="newsCard">
-            {item.title}
+            <h1>{item.title}</h1>
             <p>{item.description}</p>
+            <img className="cardImage" src={item.urlToImage} />
             <p>To display the full story <a href={item.url} className="link">click here</a></p>
           </div>
         ))}
