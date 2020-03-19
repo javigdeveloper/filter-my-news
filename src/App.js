@@ -5,7 +5,7 @@ function App(props) {
   const [articles, setArticles] = useState([])
   const [category, setCategory] = useState("")
 
-  var queryString = category ? "q=" + category + "&" : ""
+  var queryString = category ? "q=" + category + "&" + "from=" + document.getElementById("myDate").value + "&": ""
   var userDefault = 'http://newsapi.org/v2/top-headlines?' + 'country=us&' + 'apiKey=886b63931cdf4e95bbde58840ef289c2';
   var userSearch = 'http://newsapi.org/v2/everything?' + queryString +
   'apiKey=886b63931cdf4e95bbde58840ef289c2';
@@ -27,17 +27,22 @@ function App(props) {
   return (
     <div className="App">
       <h1 className="header">World News Finder</h1>
-      <p className="prompt">Enter the topic of interest here:</p>
-      <input name="" id="topic" onKeyUp={(event) => hitEnter(event)} onChange={(event) => setCategory(event.target.value)
-        }></input>
-      <button id="myBtn" onClick={() => getNews(userSearch)}>Search</button>
+      <div className="instructions">
+        <p className="prompt">Topic of interest:</p>
+        <input id="myTopic" onKeyUp={(event) => hitEnter(event)} onChange={(event) => setCategory(event.target.value)
+          }></input>
+        <p className="prompt">Date:</p>
+        <input type="date" id="myDate"></input>
+        <button id="myBtn" onClick={() => getNews(userSearch)}>Search</button>
+      </div>
       <div>
         {articles.map((item, index) => (
           <div key={index} className="newsCard">
-            <h1>{item.title}</h1>
-            <p>{item.description}</p>
+            <h2>{item.title}</h2>
+            <p className="description">{item.description}</p>
             <img className="cardImage" src={item.urlToImage} />
             <p>To display the full story <a href={item.url} className="link">click here</a></p>
+            <p className="published">{item.publishedAt}</p>
           </div>
         ))}
       </div>
