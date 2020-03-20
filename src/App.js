@@ -5,17 +5,26 @@ function App(props) {
   const [articles, setArticles] = useState([])
   const [category, setCategory] = useState("")
 
-  var queryString = category ? "q=" + category + "&" + "from=" + document.getElementById("myDate").value + "&": ""
-  var userDefault = 'http://newsapi.org/v2/top-headlines?' + 'country=us&' + 'apiKey=886b63931cdf4e95bbde58840ef289c2';
-  var userSearch = 'http://newsapi.org/v2/everything?' + queryString +
-  'apiKey=886b63931cdf4e95bbde58840ef289c2';
+  var queryString = category ? "q=" + category + "&" + "from=" + document.getElementById("myDate").value : ""
+  var userDefault = 'http://newsapi.org/v2/top-headlines?' + 'country=us';
+  var userSearch = 'http://newsapi.org/v2/everything?' + queryString
 
   function getNews(urlParam){
-    fetch(urlParam)
-    .then(response => response.json())
-    .then(data => setArticles(data.articles));
+    var myHeaders = new Headers();
+    myHeaders.append("X-Api-Key", "886b63931cdf4e95bbde58840ef289c2");
+    
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+    
+    fetch(urlParam, requestOptions)
+      .then(response => response.json())
+      .then(data => setArticles(data.articles))
+      .catch(error => console.log('error', error));
   }
-  
+
   function hitEnter (event) {
     if (event.keyCode === 13) {
       event.preventDefault();
@@ -23,7 +32,21 @@ function App(props) {
     }
   }
 
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0');
+  var yyyy = today.getFullYear();
+  var lm = "";
+  (mm != "01") ? lm = String(today.getMonth()).padStart(2, '0') : lm = "12";
+  var tm = "";
+  (dd == "28" || dd == "29" || dd == "30" || dd == "31") ? tm = "01" : tm = String(today.getDate() + 1).padStart(2, '0');
+  (dd == "28" || dd == "29" || dd == "30" || dd == "31") ? lm = mm : lm = String(today.getMonth()).padStart(2, '0');
+  
+  today = yyyy + '-' + mm + '-' + dd;
+  var monthAgo = yyyy + '-' + lm + '-' + tm;
+
   useEffect(()=>getNews(userDefault), [])
+
   return (
     <div className="App">
       <h1 className="header">World News Finder</h1>
@@ -32,13 +55,13 @@ function App(props) {
         <input id="myTopic" onKeyUp={(event) => hitEnter(event)} onChange={(event) => setCategory(event.target.value)
           }></input>
         <p className="prompt">Date:</p>
-        <input type="date" id="myDate"></input>
+        <input type="date" id="myDate" min={monthAgo} max={today} ></input>
         <button id="myBtn" onClick={() => getNews(userSearch)}>Search</button>
       </div>
       <div>
         {articles.map((item, index) => (
           <div key={index} className="newsCard">
-            <h2>{item.title}</h2>
+            <h2 className="title">{item.title}</h2>
             <p className="description">{item.description}</p>
             <img className="cardImage" src={item.urlToImage} />
             <p>To display the full story <a href={item.url} className="link">click here</a></p>

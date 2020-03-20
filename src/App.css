@@ -1,5 +1,5 @@
 html {
-  background: linear-gradient(-45deg, #8fbe63, #e73c7e, #8db667, #199c7e);
+  background: linear-gradient(-45deg, #8fbe63, #e73c7e, #8db667, #77aa9e);
 }
 
 .App {
@@ -20,9 +20,9 @@ html {
 
 .newsCard {
   border: solid;
-  font-size: 1em;
   margin: 1% 10% 2% 10%;
   padding: 1em;
+  background-color: rgb(170, 174, 226);
 }  
 
 @media (max-width: 380px) {
@@ -34,8 +34,14 @@ html {
   }  
 }
 
+.title {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 .description {
+  font-family: 'Times New Roman', Times, serif;
   padding: 1% 10% 1% 10%;
+  margin-bottom: 1%;
 }
 
 .link:hover {
