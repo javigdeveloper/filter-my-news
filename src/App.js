@@ -47,10 +47,22 @@ function App(props) {
 
   useEffect(()=>getNews(userDefault), [])
 
+  window.onscroll = function() {myFunction()};
+
+  function myFunction() {
+    var navbar = document.getElementById("instructions");
+    var sticky = navbar.offsetTop;
+    if (window.pageYOffset > sticky) {
+      navbar.classList.add("sticky")
+    } else {
+      navbar.classList.remove("sticky");
+    }
+  }
+
   return (
     <div className="App">
       <h1 className="header">World News Finder</h1>
-      <div className="instructions">
+      <div id="instructions">
         <p className="prompt">Topic of interest:</p>
         <input id="myTopic" onKeyUp={(event) => hitEnter(event)} onChange={(event) => setCategory(event.target.value)
           }></input>
@@ -58,7 +70,7 @@ function App(props) {
         <input type="date" id="myDate" min={monthAgo} max={today} ></input>
         <button id="myBtn" onClick={() => getNews(userSearch)}>Search</button>
       </div>
-      <div>
+      <div className="content">
         {articles.map((item, index) => (
           <div key={index} className="newsCard">
             <h2 className="title">{item.title}</h2>
