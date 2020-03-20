@@ -9,13 +9,16 @@ html {
 .header {
   font-size: 2.4em;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin-bottom: 0em;
+  margin-top: 0em;
+  padding: 0.4em;
 }
 
 .prompt {
-  margin-bottom: 0.1em;
-  margin-right: 0.5em;
+  margin: 0.5em 0.5em 0.5em 0.5em;
   font-size: 1.1em;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: rgb(170, 174, 226);
 }
 
 .newsCard {
@@ -50,14 +53,36 @@ html {
 }
 
 .cardImage {
-  max-width: 50%;
+  max-width: 70%;
 }
 @media (min-width: 500px) {
-  .instructions {
+  #instructions {
+    background-color: rgb(50, 104, 77);
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
   }
+}
+
+@media (max-width: 500px) {
+  #instructions {
+    padding-bottom: 0.5em;
+  }
+}
+
+#instructions {
+  background-color: rgb(50, 104, 77);
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 0.2em;
+}
+
+.sticky + .content {
+  padding-top: 60px;
 }
 
 #myTopic {
