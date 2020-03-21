@@ -12,6 +12,8 @@ html {
   margin-bottom: 0em;
   margin-top: 0em;
   padding: 0.4em;
+  text-shadow: 3px 3px 5px rgba(252, 4, 4, 0.466), 
+              8px 8px 10px rgba(0, 0, 0, 0.377);
 }
 
 .prompt {
@@ -19,13 +21,20 @@ html {
   font-size: 1.1em;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   color: rgb(170, 174, 226);
+  font-weight: 800;
+}
+
+.content {
+  padding: 1em;
+  column-width: 18em;
 }
 
 .newsCard {
   border: solid;
-  margin: 1% 10% 2% 10%;
+  margin: 5px 2px 5px 2px;
   padding: 1em;
   background-color: rgb(170, 174, 226);
+  break-inside: avoid;
 }  
 
 @media (max-width: 380px) {
@@ -44,7 +53,7 @@ html {
 .description {
   font-family: 'Times New Roman', Times, serif;
   padding: 1% 10% 1% 10%;
-  margin-bottom: 1%;
+  margin: 0% 5% 1% 5%;
 }
 
 .link:hover {
@@ -87,17 +96,27 @@ html {
 
 #myTopic {
   font-size: 1em;
+  font-weight: 600;
   margin-right: 1em;
+  box-shadow: inset 0 0 7px black;
+  border-radius: 10%;
+  width: 9em;
 }
 
 #myDate {
   font-size: 1em;
   margin-right: 1em;
+  box-shadow: inset 0 0 7px black;
+  border-radius: 10%;
+  font-weight: 600;
 }
 
 #myBtn {
   font-size: 1em;
   margin-right: 1em;
+  box-shadow: inset 0 0 7px black;
+  border-radius: 10%;
+  font-weight: 600;
 }
 
 .published {

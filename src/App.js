@@ -37,10 +37,10 @@ function App(props) {
   var mm = String(today.getMonth() + 1).padStart(2, '0');
   var yyyy = today.getFullYear();
   var lm = "";
-  (mm != "01") ? lm = String(today.getMonth()).padStart(2, '0') : lm = "12";
+  (mm !== "01") ? lm = String(today.getMonth()).padStart(2, '0') : lm = "12";
   var tm = "";
-  (dd == "28" || dd == "29" || dd == "30" || dd == "31") ? tm = "01" : tm = String(today.getDate() + 1).padStart(2, '0');
-  (dd == "28" || dd == "29" || dd == "30" || dd == "31") ? lm = mm : lm = String(today.getMonth()).padStart(2, '0');
+  (dd === "28" || dd === "29" || dd === "30" || dd === "31") ? tm = "01" : tm = String(today.getDate() + 1).padStart(2, '0');
+  (dd === "28" || dd === "29" || dd === "30" || dd === "31") ? lm = mm : lm = String(today.getMonth()).padStart(2, '0');
   
   today = yyyy + '-' + mm + '-' + dd;
   var monthAgo = yyyy + '-' + lm + '-' + tm;
@@ -75,7 +75,7 @@ function App(props) {
           <div key={index} className="newsCard">
             <h2 className="title">{item.title}</h2>
             <p className="description">{item.description}</p>
-            <img className="cardImage" src={item.urlToImage} />
+            <img className="cardImage" src={item.urlToImage} alt="for each news" />
             <p>To display the full story <a href={item.url} className="link">click here</a></p>
             <p className="published">{item.publishedAt}</p>
           </div>
