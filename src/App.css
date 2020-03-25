@@ -1,5 +1,5 @@
 html {
-  background: linear-gradient(-45deg, #7b9662, #bb7b90, #8db667, #77aa9e);
+  background: linear-gradient(-45deg, #2b5cfb, #4ebcdd, #4668af, #2b5afb);
 }
 
 .App {
@@ -12,7 +12,7 @@ html {
   margin-bottom: 0em;
   margin-top: 0em;
   padding: 0.4em;
-  text-shadow: 3px 3px 5px rgba(252, 4, 4, 0.466), 
+  text-shadow: 3px 3px 5px rgba(252, 194, 4, 0.466), 
               8px 8px 10px rgba(0, 0, 0, 0.377);
 }
 
@@ -20,7 +20,7 @@ html {
   margin: 0.5em;
   font-size: 1.1em;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  color: rgb(170, 174, 226);
+  color: rgb(192, 195, 241);
   font-weight: 800;
 }
 
@@ -33,8 +33,9 @@ html {
   border: solid;
   margin: 5px 2px 5px 2px;
   padding: 1em;
-  background-color: rgb(170, 174, 226);
+  background-color: rgb(192, 195, 241);
   break-inside: avoid;
+  border-radius: 1% 10% 1% 10%;
 }  
 
 @media (max-width: 380px) {
@@ -43,6 +44,7 @@ html {
     font-size: 0.8em;
     margin: 1em;
     padding: 1em;
+    border-radius: 1% 10% 1% 10%;
   }  
 }
 
@@ -51,10 +53,11 @@ html {
 }
 
 .description {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: comic;
   padding: 1% 10% 1% 10%;
   margin: 0% 5% 1% 5%;
   overflow: auto;
+  text-align: justify;
 }
 
 .link:hover {
@@ -81,7 +84,7 @@ html {
 }
 
 #instructions {
-  background-color: rgb(50, 104, 77);
+  background-color: rgb(9, 19, 80);
 }
 
 .sticky {
