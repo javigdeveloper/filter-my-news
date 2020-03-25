@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 
-function App(props) {
+function App() {
   const [articles, setArticles] = useState([])
   const [category, setCategory] = useState("")
 
@@ -32,6 +32,8 @@ function App(props) {
     }
   }
 
+// next block limits the calendar to 29 days unless it's 28 or higher, then it limits to 1st of the month
+
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
   var mm = String(today.getMonth() + 1).padStart(2, '0');
@@ -41,11 +43,12 @@ function App(props) {
   var tm = "";
   (dd === "28" || dd === "29" || dd === "30" || dd === "31") ? tm = "01" : tm = String(today.getDate() + 1).padStart(2, '0');
   (dd === "28" || dd === "29" || dd === "30" || dd === "31") ? lm = mm : lm = String(today.getMonth()).padStart(2, '0');
-  
   today = yyyy + '-' + mm + '-' + dd;
   var monthAgo = yyyy + '-' + lm + '-' + tm;
 
   useEffect(()=>getNews(userDefault), [])
+
+// block for sticky navbar
 
   window.onscroll = function() {myFunction()};
 
@@ -67,7 +70,8 @@ function App(props) {
         <input id="myTopic" onKeyUp={(event) => hitEnter(event)} onChange={(event) => setCategory(event.target.value)
           }></input>
         <p className="prompt">Date:</p>
-        <input type="date" id="myDate" min={monthAgo} max={today} ></input>
+        <input type="date" id="myDate" min={monthAgo} max={today} onKeyUp={(event) => hitEnter(event)} onChange={(event) => setCategory(event.target.value)
+          }></input>
         <button id="myBtn" onClick={() => getNews(userSearch)}>Search</button>
       </div>
       <div className="content">
@@ -75,7 +79,7 @@ function App(props) {
           <div key={index} className="newsCard">
             <h2 className="title">{item.title}</h2>
             <p className="description">{item.description}</p>
-            <img className="cardImage" src={item.urlToImage} alt="for each news" />
+            <img className="cardImage" src={item.urlToImage} alt="No available image" />
             <p>To display the full story <a href={item.url} className="link">click here</a></p>
             <p className="published">{item.publishedAt}</p>
           </div>
