@@ -6,8 +6,8 @@ function App() {
   const [category, setCategory] = useState("")
 
   var queryString = category ? "q=" + category + "&" + "from=" + document.getElementById("myDate").value : ""
-  var userDefault = 'http://newsapi.org/v2/top-headlines?' + 'country=us';
-  var userSearch = 'http://newsapi.org/v2/everything?' + queryString
+  var userDefault = 'https://newsapi.org/v2/top-headlines?' + 'country=us';
+  var userSearch = 'https://newsapi.org/v2/everything?' + queryString
 
   function getNews(urlParam){
     var myHeaders = new Headers();
