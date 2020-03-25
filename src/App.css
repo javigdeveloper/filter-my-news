@@ -1,5 +1,5 @@
 html {
-  background: linear-gradient(-45deg, #8fbe63, #e73c7e, #8db667, #77aa9e);
+  background: linear-gradient(-45deg, #7b9662, #bb7b90, #8db667, #77aa9e);
 }
 
 .App {
@@ -17,7 +17,7 @@ html {
 }
 
 .prompt {
-  margin: 0.5em 0.5em 0.5em 0.5em;
+  margin: 0.5em;
   font-size: 1.1em;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   color: rgb(170, 174, 226);
@@ -54,6 +54,7 @@ html {
   font-family: 'Times New Roman', Times, serif;
   padding: 1% 10% 1% 10%;
   margin: 0% 5% 1% 5%;
+  overflow: auto;
 }
 
 .link:hover {
